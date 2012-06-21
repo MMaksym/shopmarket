@@ -1,0 +1,1 @@
+curl http://localhost:8080/solr/cars/update/csv?commit=true -F stream.body=@cars.csv -F stream.contentType=text/plain;charset=utf-8 -F header=false -F fieldnames=id,make,model,year,price,engine_size,mileage,colour,damaged

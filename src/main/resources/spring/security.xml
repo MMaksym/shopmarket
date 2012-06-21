@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <security:global-method-security secured-annotations="enabled" jsr250-annotations="enabled"/>
+    
+    <bean id="authenticationManager" class="com.ua.shop.security.UserAuthenticationManager"/>
+
+
+    <security:http auto-config="true" authentication-manager-ref="authenticationManager">
+        <security:intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/register*/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/forgot_password*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/change_password*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <security:intercept-url pattern="/html/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+        <!--<security:intercept-url pattern="/**" access="ROLE_USER" />-->
+
+        <security:form-login login-page="/login" default-target-url="/"
+                             authentication-failure-url="/login?failed=true"
+                             username-parameter="login"
+                             password-parameter="password"
+                             login-processing-url="/signin"/>
+        <security:logout logout-url="/logout" logout-success-url="/"/>
+    </security:http>
+
+
+    <security:authentication-manager>
+
+        <security:authentication-provider user-service-ref="userServiceImpl">
+            <security:password-encoder ref="passwordEncoder"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+
+
+</beans>

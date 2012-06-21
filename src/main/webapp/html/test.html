@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>jQuery test page</title>
+    <link rel="stylesheet" type="text/css" href="css/ui-darkness/jquery-ui-1.8.18.custom.css">
+    <script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-i18n.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var mySelect = $("#myselect");
+            var list = $("#list");
+
+            $("#accordion").accordion({
+                autoHeight:true
+            });
+
+            var datePicker = $("#datepicker");
+            datePicker.datepicker($.datepicker.regional[ "fr" ]);
+            $("#format").change(function () {
+                datePicker.datepicker("option", "dateFormat", $(this).val());
+            });
+
+            $("#openDialog").click(function () {
+                $("#dialog").dialog("open");
+            });
+
+            $( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+            $("#dialog").dialog({
+                autoOpen:false,
+                modal:true
+            });
+
+            $("input:button").button();
+
+            $("#radio").buttonset();
+            $("#numbers").find("input:checkbox").button();
+
+            $("#buttonIcon button:first").button({
+                icons:{
+                    primary:"ui-icon-locked"
+                },
+                text:false
+            }).next().button({
+                        icons:{
+                            primary:"ui-icon-locked"
+                        }
+                    }).next().button({
+                        icons:{
+                            primary:"ui-icon-gear",
+                            secondary:"ui-icon-triangle-1-s"
+                        }
+                    }).next().button({
+                        icons:{
+                            primary:"ui-icon-gear",
+                            secondary:"ui-icon-triangle-1-s"
+                        },
+                        text:false
+                    });
+
+            $("#showValue").click(function () {
+                alert(mySelect.val());
+            });
+
+            $("#showText").click(function () {
+                alert($(mySelect).find("option:selected").text());
+            });
+
+            $("#show").click(function () {
+                var second = $(list).find("li").eq(1);
+
+                second.text("new text");
+
+//                alert();
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        a.test {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--<a id="link" href="#">Click</a>-->
+<!--<div id="message">Message</div>-->
+<!--<input type="text" id="in" value="vaaaaaa">-->
+<select id="myselect">
+    <option value="1">Mr</option>
+    <option value="2">Mrs</option>
+    <option value="3">Ms</option>
+    <option value="4">Dr</option>
+    <option value="5">Prof</option>
+</select>
+
+<input id="showValue" type="button" value="Show Value">
+<input id="showText" type="button" value="Show Text">
+
+<p>Date: <input type="text" id="datepicker"></p>
+<select id="format">
+    <option value="mm/dd/yy">Default - mm/dd/yy</option>
+    <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+    <option value="d M, y">Short - d M, y</option>
+    <option value="d MM, y">Medium - d MM, y</option>
+    <option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+    <option value="'day' d 'of' MM 'in the year' yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+</select>
+
+<button id="openDialog">Open dialog</button>
+
+<div id="dialog" title="Basic dialog">
+    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized
+        and closed with the 'x' icon.</p>
+</div>
+
+<div id="radio">
+    <input type="radio" id="radio1" name="radio"/><label for="radio1">Choice 1</label>
+    <input type="radio" id="radio2" name="radio" checked="checked"/><label for="radio2">Choice 2</label>
+    <input type="radio" id="radio3" name="radio"/><label for="radio3">Choice 3</label>
+</div>
+
+<div id="numbers">
+    <h3>Choose your numbers</h3>
+    <input type="checkbox" id="check1"/><label for="check1">One</label> <br/>
+    <input type="checkbox" id="check2"/><label for="check2">Two</label><br/>
+    <input type="checkbox" id="check3"/><label for="check3">Three</label><br/>
+</div>
+
+<div id="buttonIcon">
+    <button>Button with icon only</button>
+    <button>Button with icon on the left</button>
+    <button>Button with two icons</button>
+    <button>Button with two icons and no text</button>
+</div>
+
+<div>
+    <span class="ui-icon ui-icon-folder-open"></span>
+</div>
+
+<div style="width: 300px;" id="accordionResizer">
+    <div id="accordion">
+        <h3><a href="#">Section 1</a></h3>
+
+        <div>
+            Section 1 content
+        </div>
+        <h3><a href="#">Section 2</a></h3>
+
+        <div>
+            <p>Section 2 content</p>
+
+            <p>Section 2 content</p>
+
+            <p>Section 2 content</p>
+
+            <p>Section 2 content</p>
+
+            <p>Section 2 content</p>
+        </div>
+        <h3><a href="#">Section 3</a></h3>
+
+        <div>
+            <p>Section 3 content</p>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top:7px; padding:10px; width:350px; height:50px;" class="ui-widget-content">I'm another panel</div>
+
+
+</body>
+</html>

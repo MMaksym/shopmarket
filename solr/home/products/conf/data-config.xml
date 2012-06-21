@@ -1,0 +1,14 @@
+<dataConfig>
+    <dataSource type="JdbcDataSource"
+                driver="com.mysql.jdbc.Driver"
+                url="jdbc:mysql://localhost:3306/shopmarketdb"
+                user="root"
+                password="1"/>
+    <document name="products">
+        <entity name="node" query="select node.nid AS nid,node_revisions.body AS body,node_revisions.title AS title from node,node_revisions where node.status = 1 and node.nid = node_revisions.nid and node.vid = node_revisions.vid">
+            <field column="nid" name="id" />
+            <field column="body" name="body" />
+            <field column="title" name="title" />
+        </entity>
+    </document>
+</dataConfig>

@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-frame {
+    border: solid 1px black;
+    width: 900px;
+    margin: 20px auto 10px; /**/
+}
+
+#header {
+    /*border: solid 1px red;*/
+
+}
+
+.sign-in-status{
+    padding: 5px 2px 2px 5px;
+}
+
+#navigation {
+    /*border: solid 1px blue;*/
+    float: left;
+    height: 500px;
+    padding: 5px 5px 20px;
+}
+
+#content {
+    /*border:solid 1px green;*/
+    overflow: hidden;
+    padding: 5px 5px 20px;
+    background-color: white;
+    /*height: 500px*/
+}
+
+#footer {
+    /*border:solid 1px red;*/
+    text-align: center;
+}
+
+#login-form table, a {
+    margin: 5px auto 5px;
+}
+
+#navigation li{
+    list-style-type:none;
+}
+
+.error {
+    color: red;
+}
+
+
+
+
+

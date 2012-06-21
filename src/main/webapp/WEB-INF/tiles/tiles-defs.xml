@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="baseLayout" template="/WEB-INF/jsp/layout/baseLayout.jsp">
+        <put-attribute name="title" value="page.main"/>
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp"/>
+        <put-attribute name="navigation" value="/WEB-INF/jsp/layout/navigation.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/layout/body.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp"/>
+    </definition>
+
+    <definition name="withoutLeftMenu" template="/WEB-INF/jsp/layout/withoutLeftMenu.jsp">
+        <put-attribute name="title" value="page.main"/>
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/layout/body.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp"/>
+    </definition>
+
+    <definition name="index" extends="baseLayout">
+
+    </definition>
+
+
+    <definition name="viewCategory" extends="baseLayout">
+        <!--<put-attribute name="title" value="Categories"/>-->
+        <put-attribute name="content" value="/WEB-INF/jsp/category/view.jsp"/>
+    </definition>
+
+    <definition name="editCategory" extends="baseLayout">
+        <!--<put-attribute name="title" value="Edit category"/>-->
+        <put-attribute name="content" value="/WEB-INF/jsp/category/edit.jsp"/>
+    </definition>
+
+    <definition name="viewProducts" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/view.jsp"/>
+    </definition>
+
+    <definition name="editProduct" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/edit.jsp"/>
+    </definition>
+
+    <definition name="loginPage" extends="baseLayout">
+        <put-attribute name="title" value="page.login"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login/login.jsp"/>
+    </definition>
+
+    <definition name="registerPage" extends="baseLayout">
+        <put-attribute name="title" value="page.register"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login/register.jsp"/>
+    </definition>
+
+    <definition name="forgotPassword" extends="baseLayout">
+        <put-attribute name="title" value="page.forgot.password"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login/forgot_password.jsp"/>
+    </definition>
+
+    <definition name="newPassword" extends="baseLayout">
+        <put-attribute name="title" value="page.new.password"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login/new_password.jsp"/>
+    </definition>
+
+    <definition name="searchPage" extends="baseLayout">
+        <put-attribute name="title" value="page.search"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/search/view.jsp"/>
+    </definition>
+
+</tiles-definitions>

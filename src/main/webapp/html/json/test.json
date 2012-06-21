@@ -1,0 +1,29 @@
+{
+    "aaData":[
+        [
+            "Trident",
+            "Internet Explorer 4.0",
+            "X"
+        ],
+        [
+            "Trident",
+            "Internet Explorer 5.0",
+            "C"
+        ],
+        [
+            "Trident",
+            "Internet Explorer 5.5",
+            "A"
+        ],
+        [
+            "Trident",
+            "Internet Explorer 6",
+            "A"
+        ],
+        [
+            "Trident",
+            "Internet Explorer 7",
+            "A"
+        ]
+    ]
+}

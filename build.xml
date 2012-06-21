@@ -1,0 +1,71 @@
+<project name="Build" default="reload.all" basedir=".">
+
+    <property file="build.properties"/>
+
+    <target name="reload.jsp">
+        <copy todir="${base.output.jsp.dir}" overwrite="true">
+            <fileset dir="src/main/webapp/WEB-INF/jsp">
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="get-clean-project">
+        <copy todir="C:\projects\1">
+            <fileset dir=".">
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="reload.html">
+        <copy todir="${base.output.html.dir}" overwrite="true">
+            <fileset dir="${base.resource.html.dir}">
+                <include name="json/**.json"/>
+                <include name="*.html"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="reload.css">
+        <copy todir="${base.output.css.dir}" overwrite="true">
+            <fileset dir="${base.resource.css.dir}">
+                <include name="**/?*.*"/>
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="reload.image">
+        <copy todir="${base.output.image.dir}" overwrite="true">
+            <fileset dir="${base.resource.image.dir}">
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="reload.js">
+        <copy todir="${base.output.js.dir}" overwrite="true">
+            <fileset dir="${base.resource.js.dir}">
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="${webapps.dir}/${app.name}"/>
+        <delete file="${webapps.dir}/${app.name}.war"/>
+    </target>
+
+
+    <target name="reload.all" depends="reload.jsp,reload.css,reload.image,reload.js, reload.html"/>
+
+    <target name="reconfigure.solr">
+        <copy todir="${base.output.solr.dir}" overwrite="true">
+            <fileset dir="${base.resource.solr.dir}">
+                <exclude name="**/*.svn"/>
+            </fileset>
+        </copy>
+    </target>
+
+</project>

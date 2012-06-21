@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<schema name="cars" version="1.4">
+
+    <types>
+        <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
+        <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="true"/>
+
+        <fieldType name="tint" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+        <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="8" omitNorms="true"
+                   positionIncrementGap="0"/>
+
+        <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+            <analyzer>
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+        <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+            <analyzer>
+                <tokenizer class="solr.KeywordTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+                <filter class="solr.TrimFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+    </types>
+
+    <fields>
+        <field name="id" type="string" indexed="true" stored="true" required="true"/>
+        <field name="make" type="text" indexed="false" stored="true" required="true"/>
+        <field name="model" type="text" indexed="false" stored="true" required="true"/>
+        <field name="make_sort" type="lowercase" indexed="true" stored="false"/>
+        <field name="model_sort" type="lowercase" indexed="true" stored="false"/>
+        <field name="year" type="tint" indexed="true" stored="true" required="true"/>
+        <field name="price" type="tfloat" indexed="true" stored="true"/>
+        <field name="engine_size" type="tint" indexed="true" stored="true"/>
+        <field name="mileage" type="tint" indexed="true" stored="true"/>
+        <field name="colour" type="lowercase" indexed="true" stored="true"/>
+        <field name="damaged" type="boolean" indexed="false" stored="true"/>
+        <field name="content" type="text" indexed="true" stored="false" multiValued="true"/>
+
+    </fields>
+
+    <uniqueKey>id</uniqueKey>
+
+    <defaultSearchField>content</defaultSearchField>
+
+    <solrQueryParser defaultOperator="AND"/>
+
+    <copyField source="make" dest="content"/>
+    <copyField source="model" dest="content"/>
+    <copyField source="make" dest="make_sort"/>
+    <copyField source="model" dest="model_sort"/>
+    <copyField source="year" dest="content"/>
+
+</schema>

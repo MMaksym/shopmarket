@@ -1,0 +1,10 @@
+<html>
+<style>
+.highlite{
+    color:green;
+}
+</style>
+<body>
+    Welcome <div class="highlite"> <b>$userFirstName $userLastName</b> </div> in out site!
+</body>
+<html>

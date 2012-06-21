@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<schema name="cars" version="1.4">
+
+    <types>
+        <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+
+        <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="true"/>
+
+        <fieldType name="tint" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+        <fieldType name="tfloat" class="solr.TrieFloatField" precisionStep="8" omitNorms="true"
+                   positionIncrementGap="0"/>
+
+        <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+            <analyzer>
+                <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+        <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+            <analyzer>
+                <tokenizer class="solr.KeywordTokenizerFactory"/>
+                <filter class="solr.LowerCaseFilterFactory"/>
+                <filter class="solr.TrimFilterFactory"/>
+            </analyzer>
+        </fieldType>
+
+    </types>
+
+    <fields>
+        <field name="id" type="string" indexed="true" stored="true" required="true"/>
+
+        <field name="cat_name" type="text" indexed="false" stored="true" required="true"/>
+        <field name="cat_description" type="text" indexed="false" stored="true" />
+
+        <field name="prod_name" type="text" indexed="false" stored="true" required="true"/>
+        <field name="prod_price" type="tfloat" indexed="true" stored="true" required="true"/>
+        <field name="prod_description" type="text" indexed="false" stored="true"/>
+        <field name="currency" type="lowercase" indexed="true" stored="true" required="true"/>
+
+        <field name="cat_name_sort" type="lowercase" indexed="true" stored="false"/>
+        <field name="prod_name_sort" type="lowercase" indexed="true" stored="false"/>
+
+        <field name="content" type="text" indexed="true" stored="false" multiValued="true"/>
+
+    </fields>
+
+    <uniqueKey>id</uniqueKey>
+
+    <defaultSearchField>content</defaultSearchField>
+
+    <solrQueryParser defaultOperator="AND"/>
+
+    <copyField source="cat_name" dest="content"/>
+    <copyField source="cat_description" dest="content"/>
+
+    <copyField source="prod_name" dest="content"/>
+    <copyField source="prod_description" dest="content"/>
+
+    <copyField source="cat_name" dest="cat_name_sort"/>
+    <copyField source="prod_name" dest="prod_name_sort"/>
+
+</schema>

@@ -1,0 +1,1 @@
+curl http://localhost:8080/solr/cars/update?commit=true -H "Content-type: text/xml" --data-binary "<delete><query>*:*</query></delete>"
