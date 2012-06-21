@@ -1,9 +1,6 @@
 package com.ua.shop.search.handler;
 
 import com.ua.shop.search.model.Message;
-import org.springframework.oxm.Marshaller;
-import org.springframework.oxm.Unmarshaller;
-import org.springframework.oxm.XmlMappingException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
