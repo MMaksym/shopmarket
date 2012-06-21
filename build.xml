@@ -10,14 +10,6 @@
         </copy>
     </target>
 
-    <target name="get-clean-project">
-        <copy todir="C:\projects\1">
-            <fileset dir=".">
-                <exclude name="**/*.svn"/>
-            </fileset>
-        </copy>
-    </target>
-
     <target name="reload.html">
         <copy todir="${base.output.html.dir}" overwrite="true">
             <fileset dir="${base.resource.html.dir}">
