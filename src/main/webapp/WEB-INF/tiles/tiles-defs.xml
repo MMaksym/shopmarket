@@ -68,4 +68,9 @@
         <put-attribute name="content" value="/WEB-INF/jsp/search/view.jsp"/>
     </definition>
 
+    <definition name="errorPage" extends="baseLayout">
+        <put-attribute name="title" value="page.search"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/error/common_error.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -59,4 +59,14 @@
         <property name="defaultLocale" value="en"/>
     </bean>
 
+    <bean id="errorMapping" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="errorPage"/>
+        <property name="defaultStatusCode" value="500"/>
+        <!--<property name="exceptionMappings">-->
+            <!--<props>-->
+                <!--<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error/uploadsize</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    </bean>
+
 </beans>

@@ -2,6 +2,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+<script type="text/javascript" src="<%=request.getContextPath()%>/html/js/category/edit.js"></script>
+
 <form action="<%=request.getContextPath()%>/category" method="post">
     <input type="hidden" name="id" value="${category.id}"/>
     <table>
@@ -18,7 +20,7 @@
 
         <tr>
             <td><input type="submit" value="<spring:message code="save"/>"/></td>
-            <td><input type="button" value="<spring:message code="back"/>"></td>
+            <td><input type="button" class="back" value="<spring:message code="back"/>"></td>
         </tr>
 
     </table>

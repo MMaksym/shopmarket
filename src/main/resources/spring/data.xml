@@ -32,6 +32,6 @@
 
     <tx:annotation-driven  transaction-manager="transactionManager"/>
     
-    <jpa:repositories base-package="com.ua.shop.service.repository.impl"/>
+    <!--<jpa:repositories base-package="com.ua.shop.service.repository.impl"/>-->
 
 </beans>
