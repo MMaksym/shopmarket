@@ -1,0 +1,95 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+archivesBaseName = "${applicationName}"
+
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    testCompile "junit:junit:4.8.2"
+    testCompile "org.springframework:spring-test:${springFrameworkVersion}"
+
+    //Spring Framework
+    compile "org.springframework:spring-context:${springFrameworkVersion}"
+    compile "org.springframework:spring-core:${springFrameworkVersion}"
+    compile "org.springframework:spring-beans:${springFrameworkVersion}"
+    compile "org.springframework:spring-aop:${springFrameworkVersion}"
+    compile "org.springframework:spring-web:${springFrameworkVersion}"
+    compile "org.springframework:spring-webmvc:${springFrameworkVersion}"
+    compile "org.springframework:spring-tx:${springFrameworkVersion}"
+    compile "org.springframework:spring-context-support:${springFrameworkVersion}"
+    compile "org.springframework:spring-orm:${springFrameworkVersion}"
+    compile "org.springframework:spring-expression:${springFrameworkVersion}"
+    compile "org.springframework:spring-asm:${springFrameworkVersion}"
+    compile "org.springframework:spring-instrument:${springFrameworkVersion}"
+
+    //Spring Data
+    compile "org.springframework.data:spring-data-jpa:1.0.3.RELEASE"
+
+    compile "log4j:log4j:${log4jVersion}"
+
+    //Apache commons
+    compile "commons-lang:commons-lang:${commonsLangVersion}"
+    compile "commons-collections:commons-collections:${commonsCollectionsVersion}"
+    compile "commons-beanutils:commons-beanutils:${commonsBeanUtilsVersion}"
+    compile "commons-codec:commons-codec:${commonsCodecVersion}"
+    compile "commons-httpclient:commons-httpclient:${commonsHttpClientVersion}"
+    compile "commons-fileupload:commons-fileupload:${commonsFileUploadVersion}"
+    compile "commons-digester:commons-digester:${commonsDigesterVersion}"
+    compile "commons-logging:commons-logging:${commonsLogginVersion}"
+    compile "commons-io:commons-io:${commonsIOVersion}"
+    compile "commons-email:commons-email:${commonsEmailVersion}"
+
+    //Hibernate
+    compile "org.antlr:antlr-runtime:${antlrVersion}"
+    compile "dom4j:dom4j:${dom4jVersion}"
+    compile "javassist:javassist:${javassistVersion}"
+    compile "javax.transaction:jta:${jtaVersion}"
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    compile "org.slf4j:slf4j-simple:${slf4jVersion}"
+    compile "org.hibernate:hibernate-core:${hibernateVersion}"
+    compile "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+    compile "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+    compile "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+
+    //Web
+    providedCompile "javax.servlet:servlet-api:${servletAPIVersion}"
+    providedCompile "javax.servlet:jsp-api:${jspAPIVersion}"
+    compile "jstl:jstl:${jstlVersion}"
+
+    //Tiles
+    compile "org.apache.tiles:tiles-api:${tilesVersion}"
+    compile "org.apache.tiles:tiles-core:${tilesVersion}"
+    compile "org.apache.tiles:tiles-jsp:${tilesVersion}"
+
+    //Oval
+    compile "net.sf.oval:oval:${ovalVersion}"
+
+    //Spring Security
+    compile "org.springframework.security:spring-security-core:${springSecurityVersion}"
+    compile "org.springframework.security:spring-security-config:${springSecurityVersion}"
+    compile "org.springframework.security:spring-security-taglibs:${springSecurityVersion}"
+    compile "org.springframework.security:spring-security-web:${springSecurityVersion}"
+
+    compile "org.apache.velocity:velocity:${velocityVersion}"
+
+    compile "org.codehaus.jackson:jackson-mapper-asl:1.7.1"
+    compile "org.apache.solr:solr-core:3.6.0"
+
+}
+
+task deployToTomcat(dependsOn: build) << {
+    copy{
+        from libsDir
+        def deployTo = "${deployDir}"
+        println "deploying to ${deployTo}"
+        into deployTo
+        include "*.war"
+    }
+}
+
+
