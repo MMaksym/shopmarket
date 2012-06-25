@@ -12,28 +12,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/data.xml", "classpath:spring/service.xml", "classpath:spring/search.xml"})
+@ContextConfiguration(locations = {"classpath:spring/data.xml", "classpath:spring/service.xml"})
 public class MainManagerTest {
+
+    private static final String TEMPLATE_NAME = "test";
 
     @Autowired
     private MailManager mailManager;
 
     @Test
-    public void composeEmailTest() {
+    public void composeEmail() {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("userFirstName", "max");
         parameters.put("userLastName", "Mukhanov");
 
         String body = null;
         try {
-            body = mailManager.composeEmail("test", parameters);
+            body = mailManager.composeEmail(TEMPLATE_NAME, parameters);
             Assert.assertNotNull(body);
             Assert.assertEquals("max Mukhanov", body);
         } catch (TemplateException e) {
             Assert.fail("Email isn't composed");
         }
+    }
 
+    @Test
+    public void nullEmailParameters() {
+        Map<String, Object> parameters = new HashMap<String, Object>();
 
+        try {
+            String result = mailManager.composeEmail(TEMPLATE_NAME, parameters);
+            Assert.assertEquals("$userFirstName $userLastName", result);
+        } catch (TemplateException e) {
+            Assert.fail("Email isn't composed");
+        }
     }
 
 
