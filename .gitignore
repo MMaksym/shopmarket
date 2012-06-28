@@ -1,0 +1,33 @@
+target
+work
+.gradle
+out
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# generated files
+*.MF
+*.class
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea
+=======
+
+# eclipse project file
+.settings
+.classpath
+.project
+.checkstyle
+.springBeans
+.pmd
+.ruleset
+
+build
+test-output
+bin
