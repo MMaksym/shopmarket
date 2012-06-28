@@ -4,7 +4,7 @@
 
     <target name="reload.jsp">
         <copy todir="${base.output.jsp.dir}" overwrite="true">
-            <fileset dir="src/main/webapp/WEB-INF/jsp">
+            <fileset dir="shop-web/src/main/webapp/WEB-INF/jsp">
                 <exclude name="**/*.svn"/>
             </fileset>
         </copy>
