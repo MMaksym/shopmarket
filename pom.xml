@@ -15,7 +15,7 @@
         <log4j.version>1.2.16</log4j.version>
         <commons.lang.version>2.6</commons.lang.version>
         <commons.collection.version>3.2.1</commons.collection.version>
-        <commons.beanutils.version>1.8.3</commons.beanutils.version>
+        <commons.beanutils.version>1.9.2</commons.beanutils.version>
         <commons.codec.version>1.6</commons.codec.version>
         <commons.httpclient.version>3.1</commons.httpclient.version>
         <commons.fileupload.version>1.2.2</commons.fileupload.version>
