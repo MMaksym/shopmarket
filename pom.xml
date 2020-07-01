@@ -33,7 +33,7 @@
         <servlet.api.version>2.5</servlet.api.version>
         <jsp.api.version>2.0</jsp.api.version>
         <jstl.version>1.2</jstl.version>
-        <mysql.connector.version>5.1.18</mysql.connector.version>
+        <mysql.connector.version>8.0.16</mysql.connector.version>
         <tiles.version>2.2.2</tiles.version>
         <oval.version>1.81</oval.version>
         <velocity.version>1.6.2</velocity.version>
