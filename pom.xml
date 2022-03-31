@@ -10,7 +10,7 @@
     <properties>
         <deploy.dir>C:\Tomcat\tomcat\webapps</deploy.dir>
         <compile.version>1.6</compile.version>
-        <springframework.version>3.1.0.RELEASE</springframework.version>
+        <springframework.version>5.3.18</springframework.version>
         <springsecurity.version>3.1.0.RELEASE</springsecurity.version>
         <log4j.version>1.2.16</log4j.version>
         <commons.lang.version>2.6</commons.lang.version>
